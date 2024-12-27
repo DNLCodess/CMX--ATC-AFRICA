@@ -43,7 +43,7 @@ const Page = () => {
         <h1 className="text-3xl md:text-6xl font-bold text-primary tracking-wide">
           Meet the Incredible Organizer
         </h1>
-        <p className="text-base md:text-xl text-gray-600 leading-relaxed max-w-2xl">
+        <p className="text-base md:text-xl text-black leading-relaxed max-w-2xl font-montserrat">
           Great events are the result of dedicated teams. Community
           Professionals Hangout is no different. Meet the passionate individuals
           behind this incredible event.
@@ -51,12 +51,12 @@ const Page = () => {
       </div>
 
       <div className="bg-primary h-[5vh]"></div>
-      <div className="flex flex-wrap justify-center gap-8 p-8 bg-gray-50">
+      <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 p-4 sm:p-6 md:p-8 bg-gray-50">
         {organizers.map((person, index) => (
           <motion.div
             key={index}
             data-index={index}
-            className="organizer-card relative w-40 sm:w-48 md:w-56 text-center rounded-lg shadow-md bg-white hover:scale-105 hover:shadow-2xl transform transition duration-300 ease-in-out overflow-hidden"
+            className="organizer-card relative w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 max-w-xs text-center rounded-lg shadow-md bg-white hover:scale-105 hover:shadow-2xl transform transition duration-300 ease-in-out overflow-hidden"
             initial={{ opacity: 0, y: 20 }}
             animate={
               visibleOrganizers.includes(index)

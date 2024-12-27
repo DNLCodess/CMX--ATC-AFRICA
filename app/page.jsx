@@ -46,7 +46,7 @@ export default function Home() {
     }, 1000);
 
     return () => clearInterval(intervalId); // Cleanup on component unmount
-  }, []);
+  }, []); // Empty dependency array ensures this effect runs only on mount
 
   return (
     <div>
@@ -97,9 +97,10 @@ export default function Home() {
           ].map((text, index) => (
             <div
               key={index}
-              className="relative bg-blue-500 text-white w-full max-w-xs h-32 flex flex-col items-center justify-center rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:rotate-3"
+              className="relative bg-blue-500 px-3  text-white w-full max-w-xs h-32 flex flex-col items-center justify-center rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:rotate-3"
             >
-              <span className="absolute top-3 right-3 bg-white text-blue-500 text-sm font-bold rounded-full w-8 h-8 flex items-center justify-center shadow">
+              {/* Number at the top */}
+              <span className="absolute top-0 left-1/2 transform -translate-x-1/2 bg-white text-blue-500 text-sm font-bold rounded-full w-8 h-8 flex items-center justify-center shadow mb-4">
                 {index + 1}
               </span>
               <p className="text-xl font-semibold">{text}</p>
