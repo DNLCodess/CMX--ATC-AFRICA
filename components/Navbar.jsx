@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import logo from "@/public/assests/logo.png";
+import logo from "../public/assests/logo.png";
 import { FaBars, FaTimes } from "react-icons/fa"; // Importing hamburger and close icons
 
 const Navbar = () => {
@@ -47,7 +47,7 @@ const Navbar = () => {
           </li>
           <li>
             <a
-              href="/about"
+              href=" https://www.cmxhub.com/"
               className="text-black lg:text-gray-600 hover:text-blue-500 transition-colors duration-300"
             >
               About CMX Connect
@@ -55,7 +55,7 @@ const Navbar = () => {
           </li>
           <li>
             <a
-              href="/past-events"
+              href="https://photos.google.com/u/1/"
               className="text-black lg:text-gray-600 hover:text-blue-500 transition-colors duration-300"
             >
               Past Event
@@ -63,7 +63,7 @@ const Navbar = () => {
           </li>
           <li>
             <a
-              href="/organizers"
+              href="/Organizers"
               className="text-black lg:text-gray-600 hover:text-blue-500 transition-colors duration-300"
             >
               Organizers

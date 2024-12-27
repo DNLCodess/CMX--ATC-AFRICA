@@ -5,6 +5,9 @@ import hero2 from "@/public/assests/hero-2.png";
 import hero3 from "@/public/assests/hero-3.png";
 
 const Hero = () => {
+  const handleGetTicket = () => {
+    window.open("https://flutterwave.com/pay/a5trcezpucjs", "_blank");
+  };
   return (
     <div className="bg-white min-h-[560px] w-full flex flex-col lg:flex-row items-center justify-between px-6 lg:px-12 py-12 lg:py-16 gap-8 relative ">
       {/* Animated Background */}
@@ -23,7 +26,10 @@ const Hero = () => {
         </h3>
 
         <div className="flex flex-col lg:flex-row gap-4 justify-center lg:justify-start">
-          <button className="py-3 px-6 text-primary border-2 border-primary font-instrument text-lg rounded hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-105">
+          <button
+            className="py-3 px-6 text-primary border-2 border-primary font-instrument text-lg rounded hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-105"
+            onClick={handleGetTicket}
+          >
             Get Ticket
           </button>
           <button className="py-3 px-6 text-primary border-2 border-primary font-instrument text-lg rounded hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-105">

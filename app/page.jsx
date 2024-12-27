@@ -17,49 +17,39 @@ import logo5 from "@/public/assests/logo5.png";
 import logo6 from "@/public/assests/logo6.png";
 import logo7 from "@/public/assests/logo7.png";
 import logo8 from "@/public/assests/logo8.png";
+import { motion } from "framer-motion";
 
 export default function Home() {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 49,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
+  const endDate = new Date("2025-02-01T00:00:00");
+
+  const calculateTimeLeft = () => {
+    const now = new Date();
+    const difference = endDate - now;
+
+    if (difference <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+    return { days, hours, minutes, seconds };
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft);
 
   useEffect(() => {
-    const eventDate = new Date("2024-01-18T00:00:00").getTime();
+    const intervalId = setInterval(() => {
+      setTimeLeft(calculateTimeLeft);
+    }, 1000);
 
-    const updateCountdown = () => {
-      const now = new Date().getTime();
-      const difference = eventDate - now;
-
-      if (difference > 0) {
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-          (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        const minutes = Math.floor(
-          (difference % (1000 * 60 * 60)) / (1000 * 60)
-        );
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-        setTimeLeft({ days, hours, minutes, seconds });
-      } else {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      }
-    };
-
-    const interval = setInterval(updateCountdown, 1000);
-
-    return () => clearInterval(interval);
+    return () => clearInterval(intervalId); // Cleanup on component unmount
   }, []);
 
   return (
     <div>
-      <Navbar />
-      <div className="flex items-center justify-center">
-        <h1 className="text-lg py-4">18th January, 2024</h1>
-      </div>
       <Hero />
 
       <div className="flex flex-col md:flex-row items-center justify-center bg-blue-500 text-white p-4 space-y-4 md:space-y-0">
@@ -126,51 +116,59 @@ export default function Home() {
 
       <section className="min-h-[800px] bg-gradient-to-b from-white to-gray-50 flex flex-col gap-12 py-12">
         {/* Event Images Section */}
-        <div className="h-[350px] w-full flex justify-center">
-          <div className="w-[80%] h-full flex flex-row justify-between gap-7">
-            {/** Image 1 */}
-            <div className="w-[28%] h-full bg-gray-200 shadow-lg rounded-md overflow-hidden hover:scale-105 transform transition-all duration-300 ease-in-out">
-              <Image
-                src={image1}
-                alt="Event Image 1"
-                className="w-full h-full object-cover hover:opacity-90 transition-opacity duration-300"
-              />
-            </div>
-            {/** Image 2 */}
-            <div className="w-[28%] h-full bg-gray-200 shadow-lg rounded-md overflow-hidden hover:scale-105 transform transition-all duration-300 ease-in-out">
-              <Image
-                src={image2}
-                alt="Event Image 2"
-                className="w-full h-full object-cover hover:opacity-90 transition-opacity duration-300"
-              />
-            </div>
-            {/** Image 3 */}
-            <div className="w-[28%] h-full bg-gray-200 shadow-lg rounded-md overflow-hidden hover:scale-105 transform transition-all duration-300 ease-in-out">
-              <Image
-                src={image3}
-                alt="Event Image 3"
-                className="w-full h-full object-cover hover:opacity-90 transition-opacity duration-300"
-              />
+        <div className="h-max w-full flex justify-center">
+          <div className="w-full flex flex-col items-center justify-center py-12 px-6">
+            <div className="w-full lg:w-[80%] flex flex-col md:flex-row justify-center md:justify-between gap-8 md:gap-7">
+              {/* Image 1 */}
+              <div className="w-full md:w-[30%] aspect-[4/3] bg-gray-200 shadow-lg rounded-lg overflow-hidden hover:scale-105 transform transition-transform duration-300 ease-in-out">
+                <Image
+                  src={image1}
+                  alt="Event Image 1"
+                  className="w-full h-full object-cover hover:opacity-90 transition-opacity duration-300"
+                />
+              </div>
+
+              {/* Image 2 */}
+              <div className="w-full md:w-[30%] aspect-[4/3] bg-gray-200 shadow-lg rounded-lg overflow-hidden hover:scale-105 transform transition-transform duration-300 ease-in-out">
+                <Image
+                  src={image2}
+                  alt="Event Image 2"
+                  className="w-full h-full object-cover hover:opacity-90 transition-opacity duration-300"
+                />
+              </div>
+
+              {/* Image 3 */}
+              <div className="w-full md:w-[30%] aspect-[4/3] bg-gray-200 shadow-lg rounded-lg overflow-hidden hover:scale-105 transform transition-transform duration-300 ease-in-out">
+                <Image
+                  src={image3}
+                  alt="Event Image 3"
+                  className="w-full h-full object-cover hover:opacity-90 transition-opacity duration-300"
+                />
+              </div>
             </div>
           </div>
         </div>
 
         {/* Swags Section */}
-        <div className="h-[500px] w-full bg-white shadow-md flex flex-col items-center justify-center gap-8 py-8 px-6">
-          <h1 className="text-4xl font-extrabold text-primary tracking-tight">
+        <div className="h-auto w-full bg-white shadow-md flex flex-col items-center justify-center gap-8 py-12 px-6">
+          {/* Heading */}
+          <h1 className="text-3xl md:text-4xl font-extrabold text-primary tracking-tight text-center">
             Check out our Amazing Swags
           </h1>
-          <div className="w-[80%] h-[80%] flex justify-between gap-10">
-            {/** Swag Image 1 */}
-            <div className="w-1/2 h-full overflow-hidden rounded-lg shadow-lg hover:scale-105 transform transition-transform duration-300 ease-in-out">
+
+          {/* Swag Images */}
+          <div className="w-full lg:w-[80%] flex flex-col lg:flex-row justify-center lg:justify-between gap-8 lg:gap-10">
+            {/* Swag Image 1 */}
+            <div className="w-full lg:w-[48%] aspect-[4/3] overflow-hidden rounded-lg shadow-lg hover:scale-105 transform transition-transform duration-300 ease-in-out">
               <Image
                 src={shirt1}
                 alt="Swag 1"
                 className="w-full h-full object-cover hover:opacity-95 transition-opacity duration-300"
               />
             </div>
-            {/** Swag Image 2 */}
-            <div className="w-1/2 h-full overflow-hidden rounded-lg shadow-lg hover:scale-105 transform transition-transform duration-300 ease-in-out">
+
+            {/* Swag Image 2 */}
+            <div className="w-full lg:w-[48%] aspect-[4/3] overflow-hidden rounded-lg shadow-lg hover:scale-105 transform transition-transform duration-300 ease-in-out">
               <Image
                 src={shirt2}
                 alt="Swag 2"
@@ -207,38 +205,41 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="min-h-[60vh] w-full bg-white flex flex-col items-center">
+      <section className="min-h-[40vh] w-full bg-white flex flex-col items-center overflow-hidden">
         <h1 className="text-blue-600 text-center text-4xl font-bold mb-10 py-8">
           Community Partners
         </h1>
-        <ul className="grid grid-cols-2 md:grid-cols-4 gap-9 w-full max-w-6xl px-4">
-          <li className="flex justify-center">
-            <Image src={logo1} alt="Logo 1" className="h-20 w-auto" />
-          </li>
-          <li className="flex justify-center">
-            <Image src={logo2} alt="Logo 2" className="h-20 w-auto" />
-          </li>
-          <li className="flex justify-center">
-            <Image src={logo3} alt="Logo 3" className="h-20 w-auto" />
-          </li>
-          <li className="flex justify-center">
-            <Image src={logo4} alt="Logo 4" className="h-20 w-auto" />
-          </li>
-          <li className="flex justify-center">
-            <Image src={logo5} alt="Logo 5" className="h-20 w-auto" />
-          </li>
-          <li className="flex justify-center">
-            <Image src={logo6} alt="Logo 6" className="h-20 w-auto" />
-          </li>
-          <li className="flex justify-center">
-            <Image src={logo7} alt="Logo 7" className="h-20 w-auto" />
-          </li>
-          <li className="flex justify-center">
-            <Image src={logo8} alt="Logo 8" className="h-20 w-auto" />
-          </li>
-        </ul>
+        <motion.div
+          className="w-full flex items-center"
+          initial={{ x: 0 }}
+          animate={{ x: "-100%" }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        >
+          <div className="flex gap-6 w-full">
+            {/* Duplicate the logos for seamless sliding */}
+            {[...Array(2)].flatMap((_, i) =>
+              [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8].map(
+                (logo, index) => (
+                  <div
+                    key={`${i}-${index}`}
+                    className="flex justify-center min-w-[150px]"
+                  >
+                    <Image
+                      src={logo}
+                      alt={`Logo ${index + 1}`}
+                      className="h-20 w-auto"
+                    />
+                  </div>
+                )
+              )
+            )}
+          </div>
+        </motion.div>
       </section>
-      <Footer />
     </div>
   );
 }
