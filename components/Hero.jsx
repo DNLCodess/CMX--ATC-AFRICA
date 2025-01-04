@@ -1,10 +1,22 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import hero1 from "@/public/assests/hero-1.jpg";
 import hero2 from "@/public/assests/hero-2.png";
 import hero3 from "@/public/assests/hero-3.png";
 
 const Hero = () => {
+  const images = [hero1, hero2, hero3];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 2000); // Rotate every 600ms
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   const handleGetTicket = () => {
     window.open("https://flutterwave.com/pay/a5trcezpucjs", "_blank");
   };
@@ -28,10 +40,10 @@ const Hero = () => {
         style={{ animationDelay: "0.2s" }}
       >
         <h1 className="text-primary text-4xl lg:text-6xl font-bold font-montserrat leading-tight">
-          Ibadan <br /> Community Professionals Dinner/Awards
+          Ibadan <br /> Community Professionals Summit (Owanbe Edition)
         </h1>
         <h3 className="text-black text-xl lg:text-3xl font-semibold">
-          Owanbe Edition
+          A summit for Community proffesionals in the oyo ecosystem
         </h3>
 
         <div className="flex flex-col lg:flex-row gap-4 justify-center lg:justify-start">
@@ -51,50 +63,30 @@ const Hero = () => {
       </div>
 
       {/* Image Section */}
-      <div
-        className="relative w-full lg:w-[50%] flex mt-14 md:mt-0 justify-center items-center animate-slideUp"
-        style={{ animationDelay: "0.4s" }}
-      >
+      <div className="relative w-full lg:w-[50%] flex mt-14 md:mt-0 justify-center items-center">
         <div className="relative w-[280px] h-[280px] sm:w-[300px] sm:h-[300px] lg:w-[450px] lg:h-[450px]">
-          {/* Image 1 */}
-          <div
-            className="absolute top-0 -left-3 sm:-left-5 lg:-left-10 transform rotate-[-5deg] z-20 transition-all duration-500 hover:scale-105 hover:rotate-[-2deg]"
-            style={{ willChange: "transform" }}
-          >
-            <Image
-              src={hero3}
-              alt="Image 1"
-              width={350}
-              height={250}
-              className="object-cover rounded-lg shadow-lg"
-            />
-          </div>
-          {/* Image 2 */}
-          <div
-            className="absolute -top-5 -right-6 sm:-right-8 lg:-right-16 transform rotate-[25deg] z-30 transition-all duration-500 hover:scale-105 hover:rotate-0"
-            style={{ willChange: "transform" }}
-          >
-            <Image
-              src={hero1}
-              alt="Image 2"
-              width={350}
-              height={250}
-              className="object-cover rounded-lg  border-4 border-blue-600 shadow-lg"
-            />
-          </div>
-          {/* Image 3 */}
-          <div
-            className="absolute -bottom-5 left-6 sm:left-8 lg:left-24 transform rotate-[-5deg] z-10 transition-all duration-500 hover:scale-105 hover:rotate-[-3deg]"
-            style={{ willChange: "transform" }}
-          >
-            <Image
-              src={hero2}
-              alt="Image 3"
-              width={320}
-              height={200}
-              className="object-cover rounded-lg shadow-lg"
-            />
-          </div>
+          {images.map((image, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transform transition-all duration-500 ${
+                index === currentIndex
+                  ? "z-30 opacity-100 scale-105"
+                  : "z-10 opacity-0 scale-95"
+              }`}
+              style={{
+                animationDelay: `${index * 0.2}s`,
+                willChange: "transform, opacity",
+              }}
+            >
+              <Image
+                src={image}
+                alt={`Image ${index + 1}`}
+                width={450}
+                height={450}
+                className="object-cover rounded-lg shadow-lg"
+              />
+            </div>
+          ))}
         </div>
       </div>
     </div>

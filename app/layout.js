@@ -20,12 +20,13 @@ export default function RootLayout({ children }) {
           href="https://api.fontshare.com/v2/css?f[]=instrument-sans@400,700&display=swap"
           rel="stylesheet"
         />
+        <link rel="icon" href="/assests/web-logo.png" />
       </head>
 
       <body>
         <Navbar />
         <div className="flex items-center justify-center bg-primary">
-          <h1 className="text-lg py-4">1st Feburary, 2025</h1>
+          <h1 className="text-lg py-4">Saturday 1st Feburary, 2025</h1>
         </div>
         {children}
         <Footer />

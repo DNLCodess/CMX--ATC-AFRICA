@@ -64,7 +64,7 @@ const Navbar = () => {
           </li>
           <li>
             <a
-              href="https://photos.google.com/u/1/"
+              href="/PastEvent"
               className="text-black lg:text-gray-600 hover:text-blue-500 transition-colors duration-300"
             >
               Past Event
