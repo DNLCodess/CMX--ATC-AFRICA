@@ -122,7 +122,7 @@ const page = () => {
               src={image}
               alt={`Event ${index + 1}`}
               fill
-              className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110 group-hover:rotate-1"
+              className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110 group-hover:rotate-1 filter grayscale group-hover:filter-none"
             />
             <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out"></div>
           </div>
