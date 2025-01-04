@@ -38,15 +38,23 @@ export default function Home() {
     return { days, hours, minutes, seconds };
   };
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft);
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setTimeLeft(calculateTimeLeft);
-    }, 1000);
+    const calculateAndSet = () => setTimeLeft(calculateTimeLeft());
 
-    return () => clearInterval(intervalId); // Cleanup on component unmount
-  }, []); // Empty dependency array ensures this effect runs only on mount
+    // Initialize countdown on the client
+    calculateAndSet();
+
+    const intervalId = setInterval(calculateAndSet, 1000);
+
+    return () => clearInterval(intervalId); // Cleanup on unmount
+  }, []);
 
   return (
     <div>

@@ -1,12 +1,21 @@
 import React from "react";
 import Image from "next/image";
-import hero1 from "@/public/assests/hero-1.png";
+import hero1 from "@/public/assests/hero-1.jpg";
 import hero2 from "@/public/assests/hero-2.png";
 import hero3 from "@/public/assests/hero-3.png";
 
 const Hero = () => {
   const handleGetTicket = () => {
     window.open("https://flutterwave.com/pay/a5trcezpucjs", "_blank");
+  };
+  const phoneNumber = "+2348123051357"; // Replace with your phone number
+  const message = "Will like to Sponsor/Partner";
+
+  const handleClick = () => {
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+    window.open(whatsappUrl, "_blank");
   };
   return (
     <div className="bg-white min-h-[560px] w-full flex flex-col lg:flex-row items-center justify-between px-6 lg:px-12 py-12 lg:py-16 gap-8 relative ">
@@ -32,7 +41,10 @@ const Hero = () => {
           >
             Get Ticket
           </button>
-          <button className="py-3 px-6 text-primary border-2 border-primary font-instrument text-lg rounded hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-105">
+          <button
+            className="py-3 px-6 text-primary border-2 border-primary font-instrument text-lg rounded hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-105"
+            onClick={handleClick}
+          >
             Apply as Sponsor
           </button>
         </div>
@@ -40,7 +52,7 @@ const Hero = () => {
 
       {/* Image Section */}
       <div
-        className="relative w-full lg:w-[50%] flex justify-center items-center animate-slideUp"
+        className="relative w-full lg:w-[50%] flex mt-14 md:mt-0 justify-center items-center animate-slideUp"
         style={{ animationDelay: "0.4s" }}
       >
         <div className="relative w-[280px] h-[280px] sm:w-[300px] sm:h-[300px] lg:w-[450px] lg:h-[450px]">
@@ -59,7 +71,7 @@ const Hero = () => {
           </div>
           {/* Image 2 */}
           <div
-            className="absolute -top-5 -right-6 sm:-right-8 lg:-right-16 transform -rotate-[2deg] z-30 transition-all duration-500 hover:scale-105 hover:rotate-0"
+            className="absolute -top-5 -right-6 sm:-right-8 lg:-right-16 transform rotate-[25deg] z-30 transition-all duration-500 hover:scale-105 hover:rotate-0"
             style={{ willChange: "transform" }}
           >
             <Image
@@ -67,7 +79,7 @@ const Hero = () => {
               alt="Image 2"
               width={350}
               height={250}
-              className="object-cover rounded-lg shadow-lg"
+              className="object-cover rounded-lg  border-4 border-blue-600 shadow-lg"
             />
           </div>
           {/* Image 3 */}

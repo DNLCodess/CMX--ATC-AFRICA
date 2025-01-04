@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
       <body>
         <Navbar />
         <div className="flex items-center justify-center bg-primary">
-          <h1 className="text-lg py-4">18th January, 2024</h1>
+          <h1 className="text-lg py-4">1st Feburary, 2025</h1>
         </div>
         {children}
         <Footer />

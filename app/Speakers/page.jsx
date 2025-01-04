@@ -125,31 +125,30 @@ const Page = () => {
         </div>
       </div>
 
-      {/* Image Section */}
+      {/* "Coming Soon" Text Section */}
       <motion.div
-        id="image-section"
-        className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-2 sm:grid-cols-3  gap-6"
-        initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 1 }}
+        className="h-[20vh] inset-0 flex items-center justify-center z-10"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={
+          inView
+            ? { opacity: 1, scale: 1, y: [0, -10, 0] }
+            : { opacity: 0, scale: 0.8 }
+        }
+        transition={{
+          duration: 1.5,
+          ease: "easeInOut",
+          repeat: Infinity,
+          repeatDelay: 0.5,
+        }}
       >
-        {images.map((image, index) => (
-          <motion.div
-            key={index}
-            className="relative w-full h-60 sm:h-72 lg:h-80 overflow-hidden rounded-lg shadow-xl bg-gray-100 hover:scale-105 transform transition duration-300 ease-in-out"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={
-              inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
-            }
-            transition={{ duration: 0.6, delay: index * 0.2 }}
-          >
-            <img
-              src={image}
-              alt={`Image ${index + 1}`}
-              className="w-full h-full object-cover rounded-lg"
-            />
-          </motion.div>
-        ))}
+        <motion.h2
+          className="text-white text-4xl italic sm:text-2xl md:text-4xl font-bold tracking-wider text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          Coming Soon...
+        </motion.h2>
       </motion.div>
     </div>
   );

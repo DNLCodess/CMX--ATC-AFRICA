@@ -1,10 +1,22 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { FaLinkedin } from "react-icons/fa";
 import { BsTwitter } from "react-icons/bs";
-import logo from "../public/assests/logow.png";
+import logo from "../public/assests/CMX Connect Ibadan Logo.png";
 
 const Footer = () => {
+  const phoneNumber = "+2348123051357"; // Replace with your phone number
+  const message = "Will like to Sponsor/Partner";
+
+  const handleClick = (event) => {
+    event.preventDefault();
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
   return (
     <footer className="bg-primary w-full flex flex-col md:flex-row items-center justify-between gap-10 px-8 md:px-36 py-8">
       {/* Logo Section */}
@@ -24,7 +36,11 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="/sponsor" className="text-white hover:underline">
+              <a
+                href="#"
+                onClick={handleClick}
+                className="text-white hover:underline"
+              >
                 Sponsor
               </a>
             </li>
@@ -34,7 +50,7 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="/merch" className="text-white hover:underline">
+              <a href="/" className="text-white hover:underline">
                 Merch
               </a>
             </li>
@@ -46,23 +62,32 @@ const Footer = () => {
           <ul className="flex flex-col gap-4 text-center md:text-left">
             <li className="font-bold text-white">Connect</li>
             <li>
-              <a href="/cmx-connect" className="text-white hover:underline">
-                Join Our CMX Connect
+              <a
+                href="https://chat.whatsapp.com/HNFdaaieX4h1OnSUzOUVmo"
+                className="text-white hover:underline"
+              >
+                Join CMX Connect Ibadan
               </a>
             </li>
             <li>
-              <a href="/contact" className="text-white hover:underline">
+              <a
+                href="https://www.cmxhub.com"
+                className="text-white hover:underline"
+              >
                 Contact Us
               </a>
             </li>
             <li>
-              <a href="/follow-us" className="text-white hover:underline">
+              <a
+                href="https://www.linkedin.com/company/cmx-connect-ibadan/posts/?feedView=all"
+                className="text-white hover:underline"
+              >
                 Follow Us
               </a>
             </li>
             <li className="flex justify-center md:justify-start gap-4">
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/cmx-connect-ibadan/posts/?feedView=all"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-gray-300 text-lg"
@@ -70,7 +95,7 @@ const Footer = () => {
                 <FaLinkedin />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://x.com/CmxIbadan"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-gray-300 text-lg"

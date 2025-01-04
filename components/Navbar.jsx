@@ -1,12 +1,21 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import logo from "../public/assests/logo.png";
+import logo from "../public/assests/CMX Connect Ibadan Logo.png";
 import { FaBars, FaTimes } from "react-icons/fa"; // Importing hamburger and close icons
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false); // State to toggle menu visibility
+  const phoneNumber = "+2348123051357"; // Replace with your phone number
+  const message = "Will like to Sponsor/Partner";
 
+  const handleClick = (event) => {
+    event.preventDefault();
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+    window.open(whatsappUrl, "_blank");
+  };
   return (
     <div className="bg-white shadow-md sticky top-0 z-50">
       <div className="flex justify-between items-center px-6 lg:px-12 py-4">
@@ -69,10 +78,19 @@ const Navbar = () => {
               Organizers
             </a>
           </li>
+          <li>
+            <a
+              href="/Speakers"
+              className="text-black lg:text-gray-600 hover:text-blue-500 transition-colors duration-300"
+            >
+              Speakers
+            </a>
+          </li>
           {/* Sponsor Us Button */}
           <li>
             <a
-              href="/sponsor"
+              href="#"
+              onClick={handleClick}
               className="bg-blue-500 text-white rounded-lg px-4 py-2 lg:px-6 lg:py-2.5 transition-transform duration-300 hover:bg-blue-600 hover:scale-105"
             >
               Sponsor Us
