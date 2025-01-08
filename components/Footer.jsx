@@ -26,7 +26,10 @@ const Footer = () => {
           <ul className="flex flex-col gap-4 text-center md:text-left">
             <li className="font-bold text-white">Quick Links</li>
             <li>
-              <a href="/Spotlight" className="text-white hover:underline">
+              <a
+                href="/CommunitySpotlight"
+                className="text-white hover:underline"
+              >
                 Community Spotlight
               </a>
             </li>

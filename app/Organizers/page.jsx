@@ -4,13 +4,56 @@ import { motion } from "framer-motion";
 
 const Page = () => {
   const organizers = [
-    { name: "Tope James Moses", image: "/assests/org1.png" },
-    { name: "Kehinde Arasi", image: "/assests/org2.png" },
-    { name: "Victor Elite Ogunbode", image: "/assests/org3.png" },
-    { name: "Nwaigwe Kelechi", image: "/assests/org4.png" },
-    { name: "Abdulkareem Aishat", image: "/assests/org5.png" },
-    { name: "Emmanuel Oluwatosin Ogunwole", image: "/assests/org6.png" },
-    { name: "Idris Aderoju", image: "/assests/org_7.png" },
+    {
+      name: "Tope James Moses",
+      image: "/assests/org1.png",
+      title: "Lead Organizer",
+    },
+    {
+      name: "Kehinde Arasi",
+      image: "/assests/org2.png",
+      title: "Co-Organizer",
+    },
+    {
+      name: "Victor Elite Ogunbode",
+      image: "/assests/org3.png",
+      title: "Co-Organizer",
+    },
+    {
+      name: "Nwaigwe Kelechi",
+      image: "/assests/org4.png",
+      title: "Co-Organizer",
+    },
+    {
+      name: "Abdulkareem Aishat",
+      image: "/assests/org5.png",
+      title: "Co-Organizer",
+    },
+    {
+      name: "Emmanuel Oluwatosin Ogunwole",
+      image: "/assests/org6.png",
+      title: "Co-Organizer",
+    },
+    {
+      name: "Idris Aderoju",
+      image: "/assests/org_7.png",
+      title: "Co-Organizer",
+    },
+    {
+      name: "Adebayo Praise",
+      image: "/assests/org8.jpg",
+      title: "Co-Organizer",
+    },
+    {
+      name: "Adetoun Raji-Kolade",
+      image: "/assests/org9.jpg",
+      title: "Co-Organizer",
+    },
+    {
+      name: "Aboderin Daniel",
+      image: "/assests/org10.jpg",
+      title: "Co-Organizer",
+    },
   ];
 
   const [visibleOrganizers, setVisibleOrganizers] = useState([]);
@@ -71,16 +114,12 @@ const Page = () => {
                 alt={person.name}
                 className="w-full h-40 object-cover rounded-t-lg"
               />
-              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/50 to-transparent opacity-0 hover:opacity-100 transition duration-300">
-                <p className="absolute bottom-2 left-2 text-sm text-white font-semibold bg-black/40 px-2 py-1 rounded-lg">
-                  Organizer
-                </p>
-              </div>
             </div>
             <div className="py-4 px-3">
               <p className="text-lg font-semibold text-gray-800">
                 {person.name}
               </p>
+              <p className="text-sm text-gray-600">{person.title}</p>
             </div>
           </motion.div>
         ))}

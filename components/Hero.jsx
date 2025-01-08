@@ -18,7 +18,7 @@ const Hero = () => {
   }, [images.length]);
 
   const handleGetTicket = () => {
-    window.open("https://flutterwave.com/pay/a5trcezpucjs", "_blank");
+    window.open("https://flutterwave.com/pay/h71xlwnq1jnd", "_blank");
   };
   const phoneNumber = "+2348123051357"; // Replace with your phone number
   const message = "Will like to Sponsor/Partner";

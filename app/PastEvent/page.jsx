@@ -38,7 +38,7 @@ const page = () => {
           }
         });
       },
-      { threshold: 0.5 } // Trigger when 50% of the element is in view
+      { threshold: 0.5 }
     );
 
     const titleElement = document.getElementById("title");
@@ -84,11 +84,10 @@ const page = () => {
         className="relative h-[30vh] md:h-[50vh] bg-cover bg-center"
         style={{ backgroundImage: "url('/assests/image 1.png')" }}
       >
-        {/* Title Section */}
         <div className="absolute inset-0 bg-white bg-opacity-30 flex flex-col items-center justify-center gap-3">
           <motion.h1
             id="title"
-            className="text-4xl sm:text-4xl font-instrument md:text-5xl font-bold text-blue-500"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-500"
             initial={{ opacity: 0, y: -10 }}
             animate={
               titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }
@@ -99,7 +98,7 @@ const page = () => {
           </motion.h1>
           <motion.p
             id="text"
-            className="max-w-6xl text-base text-center text-black  px-4 font-montserrat"
+            className="max-w-6xl text-sm sm:text-base md:text-lg text-center text-black px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={textInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 1 }}
@@ -112,7 +111,7 @@ const page = () => {
         </div>
       </div>
       <div className="bg-primary h-[5vh]"></div>
-      <div className="grid grid-cols-3 gap-4 p-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
         {images.map((image, index) => (
           <div
             key={index}
